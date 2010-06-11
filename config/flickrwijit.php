@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 /**
- * Models for flickr
+ * Flickr api configuration
  *
  * PHP version 5
  * LICENSE: This source file is subject to LGPL license 
@@ -11,3 +11,5 @@
  * @copyright  Ushahidi - http://www.ushahidi.com
  * @license	   http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License (LGPL) 
  */
+
+$config['flick_api_key'] = "128105260546180";
