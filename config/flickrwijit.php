@@ -12,4 +12,4 @@
  * @license	   http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License (LGPL) 
  */
 
-$config['flick_api_key'] = "128105260546180";
+$config['flick_api_key'] = "7ffd3c4b9d9f3a486b67124d5b530f11";
