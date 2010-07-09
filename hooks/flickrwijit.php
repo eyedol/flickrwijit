@@ -83,7 +83,7 @@ class flickrwijit {
 		$flickrwijit_settings = ORM::factory('flickrwijit',1);
 		
 		$flickrwijit_view = View::factory('flickrwijit_view');
-		
+		$this->_get_flickr_images();
 		$flickrwijit_view->images = "http://lh4.ggpht.com/_SnaF3sehqPA/TDXZ1kusM8I/AAAAAAAAFJA/OJzyn75v-GI/s144/2010-07-04%2012.56.19.jpg";
 		$flickrwijit_view->image_width = $flickrwijit_settings->image_width;
 		$flickrwijit_view->image_height = $flickrwijit_settings->image_height;
@@ -93,6 +93,14 @@ class flickrwijit {
 		$flickrwijit_view->num_of_photos = $flickrwijit_settings->num_of_photos;
 		$flickrwijit_view->render(TRUE);
 	
+	}
+	
+	public function _get_flickr_images() {
+		include Kohana::find_file('libraries/phpflickr','phpFlickr');
+		$php_flickr = new phpFlickr(Kohana::config('config.flick_api_key'));
+		print "<pre>";
+			print_r($php_flickr);
+		print "</pre>";exit;
 	}
 
 }
