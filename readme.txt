@@ -1,7 +1,7 @@
 === About ===
 name: Flickrwijit
 website: http://www.ushahidi.com
-description: Converts unclickable links in reports description into clickable.
+description: Allows you to view flickr photos based on tags and photoset.
 version: 1.0
 requires: 2.0
 tested up to: 2.0

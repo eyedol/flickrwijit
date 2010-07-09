@@ -1,0 +1,1 @@
+<img src="<?php echo $images; ?>" width="<?php echo $image_width;?>" height="<?php echo $image_height;?>"/>

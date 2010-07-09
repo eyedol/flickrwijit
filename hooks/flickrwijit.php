@@ -19,14 +19,6 @@ class flickrwijit {
 	 */
 	public function __construct()
 	{
-		$this->flickr_tags = "";
-		$this->flickr_photoset = "";
-		$this->block_position = "";
-		$this->image_width = "";
-		$this->image_height = "";
-		$this->block_width = "";
-		$this->block_height = "";
-
 		// Hook into routing
 		Event::add('system.pre_controller', array($this, 'add'));
 	}
@@ -36,6 +28,8 @@ class flickrwijit {
 	 */
 	public function add()
 	{
+		// Add a Sub-Nav Link
+		Event::add('ushahidi_action.nav_admin_settings', array($this, '_settings_link'));	
 		// Only add the events if we are on the main controller
 		if (Router::$controller == 'main')
 		{
@@ -48,101 +42,59 @@ class flickrwijit {
 					// Hook into the report_submit_admin (post_POST) event right before saving
 					Event::add('ushahidi_action.report_submit_admin', array($this, '_report_validate'));
 					// Hook into the report_edit (post_SAVE) event
-					Event::add('ushahidi_action.report_edit', array($this, '_report_form_submit'));
+					Event::add('ushahidi_action.setting_form_admin', array($this, '_report_form_submit'));
 					break;
 
 				// Hook into the Report view (front end)
-				case 'view':
-					Event::add('ushahidi_action.project_display', array($this, '_report_view'));
+				case 'index':
+					Event::add('ushahidi_action.main_sidebar', array($this, '_display_flickrwiji'));
 					break;
 			}
 		}
 		elseif (Router::$controller == 'settings')
 		{
 			// Add Flickrwijit to settings page
-			
-			Event::add('ushahidi_action.feed_rss_item', array($this, '_feed_rss'));
-		}
-	}
-
-	/**
-	 * Add Flickrwijit to settings form 
-	 */
-	public function _settings_form()
-	{
-		// Load the View
-		$form = View::factory('flickrwijit_form');
-		// Get the ID of the Incident (Report)
-		$id = Event::$data;
-
-		if ($id)
-		{
-			// Do We have an Existing Actionable Item for this Report?
-			$action_item = ORM::factory('actionable')
-				->where('incident_id', $id)
-				->find();
-			if ($action_item->loaded)
+			switch(Router::$method) 
 			{
-				$this->actionable = $action_item->actionable;
-				$this->action_taken = $action_item->action_taken;
-				$this->action_summary = $action_item->action_summary;
+				case 'site':
+					//Hook into settings/site form
+					Event::add('ushahidi_action.settings_site_form_admin', array($this, '_site_form'));
+					
+					//Hook into settings retreival
+					Event::add('ushahidi_action.settings_site_retreive', array($this, '_site_setting_view')); 
+					
+					// Hook into the settings/site (post_SAVE) event
+					Event::add('ushahidi_action.settings_site_form_submit', array($this, '_site_form_submit'));
+					break;					
 			}
 		}
-
-		$form->flickr_tags = $this->flickr_tags;
-		$form->flickr_position = $this->flickr_position;
-		$form->image_width = $this->image_width;
-		$form->image_height = $this->image_height;
-		$form->block_position = $this->block_position;
-		$form->block_width = $this->block_width;
-		$form->block_height = $this->block_height;
-		$form->render(TRUE);
 	}
-
-	/**
-	 * Validate Form Submission
-	 */
-	public function _report_validate()
-	{
-
-	}
-
-	/**
-	 * Handle Form Submission and Save Data
-	 */
-	public function _settings_form_submit()
-	{
-		$incident = Event::$data['incident'];
-		$post = Event::$data['post'];
-		$id = Event::$data['id'];
-
-		if ($post)
-		{
-			$flickrwijit = ORM::factory('flickrwijit')
-				->where('flickrwijit_id', $id)
-				->find();
-			$action_item->incident_id = $incident->id;
-			$action_item->actionable = isset($post['actionable']) ? 
-				$post['actionable'] : "";
-			$action_item->action_taken = isset($post['action_taken']) ?
-				$post['action_taken'] : "";
-			$action_item->action_summary = $post['action_summary'];
-			$action_item->save();
-
-		}
-	}
-
-	/**
-	 * Render the Action Taken Information to the Report
-	 * on the front end
-	 */
-	public function _main_view()
-	{
-
-	}
-
 	
+	public function _settings_link() 
+	{
+		$this_sub_page = Event::$data;
+		
+		echo ($this_sub_page == "flickrwijit") ? Kohana::lang('flickrwijit.flickrwijit_link') : 
+			"<a href=\"".url::site()."admin/flickrwijit\">".Kohana::lang('flickrwijit.flickrwijit_link')."</a>";	
+	}
+	
+	public function _display_flickrwiji() {
+		//fetch flickrwijit settings from db
+		$flickrwijit_settings = ORM::factory('flickrwijit',1);
+		
+		$flickrwijit_view = View::factory('flickrwijit_view');
+		
+		$flickrwijit_view->images = "http://lh4.ggpht.com/_SnaF3sehqPA/TDXZ1kusM8I/AAAAAAAAFJA/OJzyn75v-GI/s144/2010-07-04%2012.56.19.jpg";
+		$flickrwijit_view->image_width = $flickrwijit_settings->image_width;
+		$flickrwijit_view->image_height = $flickrwijit_settings->image_height;
+		$flickrwijit_view->block_position = $flickrwijit_settings->block_position;
+		$flickrwijit_view->block_width = $flickrwijit_settings->block_width;
+		$flickrwijit_view->block_height = $flickrwijit_settings->block_height;
+		$flickrwijit_view->num_of_photos = $flickrwijit_settings->num_of_photos;
+		$flickrwijit_view->render(TRUE);
+	
+	}
+
 }
 
 new flickrwijit;
-
