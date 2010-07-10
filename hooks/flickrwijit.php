@@ -52,8 +52,8 @@ class flickrwijit {
 					
 					//Hook js and css files into flickrwijit page
 					plugin::add_stylesheet('flickrwijit/media/css/style');
-					plugin::add_javascript('flickrwijit/media/js/flickrslide');
-					plugin::add_javascript('flickrwijit/media/js/jquery.lightbox-0.5.min');
+					plugin::add_stylesheet('../media/css/picbox/picbox');
+					plugin::add_javascript('../media/js/picbox');
 					break;					
 			}
 		}
