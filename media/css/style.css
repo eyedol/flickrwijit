@@ -1,27 +1,16 @@
-/**
- * Linkfy Links Hook - Load All Events
- *
- * PHP version 5
- * LICENSE: This source file is subject to LGPL license 
- * that is available through the world-wide-web at the following URI:
- * http://www.gnu.org/copyleft/lesser.html
- * @author	   Ushahidi Team <team@ushahidi.com> 
- * @package	   Ushahidi - http://source.ushahididev.com
- * @copyright  Ushahidi - http://www.ushahidi.com
- * @license	   http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License (LGPL) 
- */
- 
-#thumbnails {
-	width:2000px;
-}
-	
 .thumb {
-    width:99%;
-    overflow:hidden;
+    /*width:99%;
+    overflow:hidden;*/
+    display : block;
     margin:0 auto;
     position:relative;
     zoom:1;
 }
+
+#thumbnails ul{
+	padding: 0;
+	margin : 0;
+} 
 
 #thumbnails li{
     margin : 0;
@@ -38,7 +27,7 @@
 #thumbnails li {
     float:left;
     height:90px;
-    margin:0 10px 0 0;
+    margin:0 2px 0 0;
     width:90px;
     padding:0;
 }
@@ -58,4 +47,4 @@ li img {
     padding : 2px;
     border:1px solid #fff;
 }
- 
+

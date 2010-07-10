@@ -35,36 +35,25 @@ class flickrwijit {
 		{
 			switch (Router::$method)
 			{
-				// Hook into the Report Add/Edit Form in Admin
-				case 'edit':
-					// Hook into the form itself
-					Event::add('ushahidi_action.report_form_admin', array($this, '_report_form'));
-					// Hook into the report_submit_admin (post_POST) event right before saving
-					Event::add('ushahidi_action.report_submit_admin', array($this, '_report_validate'));
-					// Hook into the report_edit (post_SAVE) event
-					Event::add('ushahidi_action.setting_form_admin', array($this, '_report_form_submit'));
-					break;
 
-				// Hook into the Report view (front end)
+				// Hook into the main dashboard
 				case 'index':
+					plugin::add_stylesheet('flickrwijit/media/css/style');
 					Event::add('ushahidi_action.main_sidebar', array($this, '_display_flickrwiji'));
 					break;
 			}
 		}
-		elseif (Router::$controller == 'settings')
-		{
+		elseif (Router::$controller == 'flickrwijit')
+		{ 	
 			// Add Flickrwijit to settings page
 			switch(Router::$method) 
 			{
-				case 'site':
-					//Hook into settings/site form
-					Event::add('ushahidi_action.settings_site_form_admin', array($this, '_site_form'));
+				case 'index':
 					
-					//Hook into settings retreival
-					Event::add('ushahidi_action.settings_site_retreive', array($this, '_site_setting_view')); 
-					
-					// Hook into the settings/site (post_SAVE) event
-					Event::add('ushahidi_action.settings_site_form_submit', array($this, '_site_form_submit'));
+					//Hook js and css files into flickrwijit page
+					plugin::add_stylesheet('flickrwijit/media/css/style');
+					plugin::add_javascript('flickrwijit/media/js/flickrslide');
+					plugin::add_javascript('flickrwijit/media/js/jquery.lightbox-0.5.min');
 					break;					
 			}
 		}
@@ -79,11 +68,19 @@ class flickrwijit {
 	}
 	
 	public function _display_flickrwiji() {
+		
 		//fetch flickrwijit settings from db
 		$flickrwijit_settings = ORM::factory('flickrwijit',1);
 		
 		$flickrwijit_view = View::factory('flickrwijit_view');
-		$this->_get_flickr_images();
+		
+		$f = $this->_get_flickr_images();
+		
+		$photos = $f->photos_search( array(
+			'tags' => $flickrwijit_settings->flickr_tag,
+			'per_page' => $flickrwijit_settings->num_of_photos,
+			'user_id' => $flickrwijit_settings->flickr_id ) );
+		
 		$flickrwijit_view->images = "http://lh4.ggpht.com/_SnaF3sehqPA/TDXZ1kusM8I/AAAAAAAAFJA/OJzyn75v-GI/s144/2010-07-04%2012.56.19.jpg";
 		$flickrwijit_view->image_width = $flickrwijit_settings->image_width;
 		$flickrwijit_view->image_height = $flickrwijit_settings->image_height;
@@ -91,16 +88,17 @@ class flickrwijit {
 		$flickrwijit_view->block_width = $flickrwijit_settings->block_width;
 		$flickrwijit_view->block_height = $flickrwijit_settings->block_height;
 		$flickrwijit_view->num_of_photos = $flickrwijit_settings->num_of_photos;
+		$flickrwijit_view->f = $f;
+		$flickrwijit_view->photos = $photos;
 		$flickrwijit_view->render(TRUE);
 	
 	}
 	
 	public function _get_flickr_images() {
 		include Kohana::find_file('libraries/phpflickr','phpFlickr');
-		$php_flickr = new phpFlickr(Kohana::config('config.flick_api_key'));
-		print "<pre>";
-			print_r($php_flickr);
-		print "</pre>";exit;
+		
+		$f = new phpFlickr(Kohana::config('flickrwijit.flick_api_key'));
+		return $f;
 	}
 
 }

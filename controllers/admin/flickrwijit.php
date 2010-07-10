@@ -52,7 +52,7 @@ class Flickrwijit_Controller extends Admin_Controller {
 	        $post->pre_filter('trim', TRUE);
 	        
 	        $post->add_rules('flickr_tag','required','length[0,500]');
-			$post->add_rules('flickr_id','length[0,20]','alpha_numeric');
+			$post->add_rules('flickr_id','length[0,20]');
 			$post->add_rules('num_of_photos','numeric');
 			$post->add_rules('image_width','length[2,600]','numeric');
 			$post->add_rules('image_height','required','length[2,600]','numeric');
