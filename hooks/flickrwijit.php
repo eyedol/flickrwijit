@@ -39,6 +39,8 @@ class flickrwijit {
 				// Hook into the main dashboard
 				case 'index':
 					plugin::add_stylesheet('flickrwijit/media/css/style');
+					plugin::add_stylesheet('../media/css/picbox/picbox');
+					plugin::add_javascript('../media/js/picbox');
 					Event::add('ushahidi_action.main_sidebar', array($this, '_display_flickrwiji'));
 					break;
 			}

@@ -5,7 +5,7 @@
     			<ul id="thumbnails">
     				<?php 
     				foreach( (array)$photos['photo'] as $photo ) {
-        				print "<li><a href=\"".$f->buildPhotoURL($photo)."\" title=\"".$photo['title']." \">
+        				print "<li><a class=\"photothumb\" rel=\"lightbox-group1\" href=\"".$f->buildPhotoURL($photo)."\" title=\"".$photo['title']." \">
         				<img  alt=\"".$photo['title']."\" title=\"".$photo['title']."\" 
         				src=\"".$f->buildPhotoURL($photo,'Square')."\"/></a></li>";
         				$owner = $f->people_getInfo( $photo['owner'] );
@@ -18,4 +18,3 @@
 		No flickr photos
 	<?php }?>
 </div>
-
