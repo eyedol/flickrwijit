@@ -7,12 +7,14 @@ $lang = array
 	'form_num_of_photos' => 'Number of photos',
 	'form_image_width' => 'Image width',
 	'form_image_height' => 'Image height',
-	'form_block_position' => 'Flickr block position',
+	'flickrwijit_enable_main_menu' => 'Enable main menu',
+	'flickrwijit_top_menu_blub' => 'Show a menu for flickrwijit at main nav bar at the frontpage.',
 	'form_block_width' => 'Width of flickrwijit block',
 	'form_block_height' => 'Height of flickrwijit block',
 	'flickrwijit_link' => 'Flickrwijit',
 	'flickrwijit_more' => 'More...',
-	'flickrwijit_no_photo' => 'No flickr photos',
+	'flickrwijit_no_photo' => 'No  photos',
+	'flickrwijit_top_nav' => 'Photos',
 	'flickr_tag' => array
 	(
 		'required'	=> 'The flickr tag is required.',

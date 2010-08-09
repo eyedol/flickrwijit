@@ -29,7 +29,8 @@ class flickrwijit {
 	public function add()
 	{
 		// Add a Sub-Nav Link
-		Event::add('ushahidi_action.nav_admin_settings', array($this, '_settings_link'));	
+		Event::add('ushahidi_action.nav_admin_settings', array($this, '_settings_link'));
+		Event::add('ushahidi_action.nav_main_top', array($this, '_top_nav_link'));		
 		// Only add the events if we are on the main controller
 		if (Router::$controller == 'main')
 		{
@@ -69,6 +70,24 @@ class flickrwijit {
 			"<a href=\"".url::site()."admin/flickrwijit\">".Kohana::lang('flickrwijit.flickrwijit_link')."</a>";	
 	}
 	
+	public function _top_nav_link()
+	{
+		//show only when top menu is enabled at the settings page
+		$top_nav = Event::$data;
+		
+		//fetch flickrwijit settings from db
+		$flickrwijit_settings = ORM::factory('flickrwijit',1);
+		
+		if($flickrwijit_settings->block_position ==  1 ) {
+		
+			echo ($this_sub_page == "flickrwijit") ? 
+				Kohana::lang('flickrwijit.flickrwijit_top_nav') : 
+				"<a href=\"".url::site()."flickrwijit\">".
+				Kohana::lang('flickrwijit.flickrwijit_top_nav')."</a>";
+	
+		}
+	}
+	
 	public function _display_flickrwiji() {
 		
 		//fetch flickrwijit settings from db
@@ -83,7 +102,6 @@ class flickrwijit {
 			'per_page' => $flickrwijit_settings->num_of_photos,
 			'user_id' => $flickrwijit_settings->flickr_id ) );
 		
-		$flickrwijit_view->images = "http://lh4.ggpht.com/_SnaF3sehqPA/TDXZ1kusM8I/AAAAAAAAFJA/OJzyn75v-GI/s144/2010-07-04%2012.56.19.jpg";
 		$flickrwijit_view->image_width = $flickrwijit_settings->image_width;
 		$flickrwijit_view->image_height = $flickrwijit_settings->image_height;
 		$flickrwijit_view->block_position = $flickrwijit_settings->block_position;

@@ -81,20 +81,10 @@
 			</div>
 			<span><?php echo Kohana::lang('flickrwijit.form_image_height');?></span>
 			<div class="row" style="padding-top: 5px;">
-				<h4><a href="#" class="tooltip" title=""><?php echo Kohana::lang('flickrwijit.form_block_position');?></a></h4>
-				<?php print form::input('block_position', $form['block_position'], ' class="text"'); ?>
+				<h4><a href="#" class="tooltip" title=""><?php echo Kohana::lang('flickrwijit.flickrwijit_enable_main_menu');?></a></h4>
+				<?php print form::dropdown('block_position',array('0'=>'No','1'=>'Yes'),$form['block_position']); ?>
 			</div>
-			<span><?php echo Kohana::lang('flickrwijit.form_block_position');?></span>
-			<div class="row" style="padding-top: 5px;">
-				<h4><a href="#" class="tooltip" title=""><?php echo Kohana::lang('flickrwijit.form_block_width');?></a></h4>
-				<?php print form::input('block_width', $form['block_width'], ' class="text"'); ?>
-			</div>
-			<span><?php echo Kohana::lang('flickrwijit.form_block_width');?></span>
-			<div class="row" style="padding-top: 5px;">
-				<h4><a href="#" class="tooltip" title=""><?php echo Kohana::lang('flickrwijit.form_block_height');?></a></h4>
-				<?php print form::input('block_height', $form['block_height'], ' class="text"'); ?>
-			</div>
-			<span><?php echo Kohana::lang('flickrwijit.form_block_height');?></span>
+			<span><?php echo Kohana::lang('flickrwijit.flickrwijit_top_menu_blub');?></span>
 		</div>
 		<!-- flickwijit ends -->
 	</div>	
