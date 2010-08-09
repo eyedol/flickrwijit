@@ -99,15 +99,8 @@ class flickrwijit {
 		
 		$photos = $f->photos_search( array(
 			'tags' => $flickrwijit_settings->flickr_tag,
-			'per_page' => $flickrwijit_settings->num_of_photos,
+			'per_page' => $flickrwijit_settings->block_no_photos,
 			'user_id' => $flickrwijit_settings->flickr_id ) );
-		
-		$flickrwijit_view->image_width = $flickrwijit_settings->image_width;
-		$flickrwijit_view->image_height = $flickrwijit_settings->image_height;
-		$flickrwijit_view->block_position = $flickrwijit_settings->block_position;
-		$flickrwijit_view->block_width = $flickrwijit_settings->block_width;
-		$flickrwijit_view->block_height = $flickrwijit_settings->block_height;
-		$flickrwijit_view->num_of_photos = $flickrwijit_settings->num_of_photos;
 		$flickrwijit_view->f = $f;
 		$flickrwijit_view->photos = $photos;
 		$flickrwijit_view->render(TRUE);

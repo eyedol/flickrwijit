@@ -36,10 +36,6 @@ class Flickrwijit_Controller extends Main_Controller {
 		
 		$this->template->content->image_width = $flickrwijit_settings->image_width;
 		$this->template->content->image_height = $flickrwijit_settings->image_height;
-		
-		$this->template->content->block_position = $flickrwijit_settings->block_position;
-		$this->template->content->block_width = $flickrwijit_settings->block_width;
-		$this->template->content->block_height = $flickrwijit_settings->block_height;
 		$this->template->content->num_of_photos = $flickrwijit_settings->num_of_photos;
 		$this->template->content->f = $f;
 		$this->template->content->photos = $photos;

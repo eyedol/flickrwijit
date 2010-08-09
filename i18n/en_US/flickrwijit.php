@@ -16,6 +16,8 @@ $lang = array
 	'flickrwijit_no_photo' => 'No  photos',
 	'flickrwijit_top_nav' => 'Photos',
 	'flickrwijit_enable_cache' => 'Enable cache',
+	'flickrwijit_enable_cache_blub' => 'Cache for photos',
+	'flickrwijit_block_no_of_photos' => 'No of photos on block',
 	'flickrwijit_block_no_of_photos_blub' => 'The number of photos to show on side block.',
 	'flickr_tag' => array
 	(
@@ -52,14 +54,14 @@ $lang = array
 		'length' => 'Select a block position for the flickrwijit.',
 		'numeric' => 'The value has to be numeric'
 	),
-	'block_height' => array
+	'enable_cache' => array
 	(
-		'length' => 'Enter a width for the flickrwijit block.',
+		'between' => 'Select either yes or no.',
 		'numeric' => 'The value has to be numeric'
 	),
-	'block_width' => array
+	'block_no_photos' => array
 	(
-		'length' => 'Enter height for the flickrwijit block.',
+		'between' => 'The number of photos cannot be greater than 10 or less than 4.',
 		'numeric' => 'The value has to be numeric'
 	)
 );

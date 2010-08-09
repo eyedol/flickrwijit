@@ -57,8 +57,8 @@ class Flickrwijit_Controller extends Admin_Controller {
 			$post->add_rules('image_width','length[2,600]','numeric');
 			$post->add_rules('image_height','required','length[2,600]','numeric');
 			$post->add_rules('block_position','length[1,6]','numeric');
-			$post->add_rules('enable_cache','length[2,600]','numeric');
-			$post->add_rules('block_no_photos','length[2,600]','numeric');
+			$post->add_rules('enable_cache','between[0,1]','numeric');
+			$post->add_rules('block_no_photos','between[4,10]','numeric');
 	        
 			// passed validation test.
 			if($post->validate()) {
@@ -69,9 +69,8 @@ class Flickrwijit_Controller extends Admin_Controller {
 				$flickrwijit_settings->num_of_photos = $post->num_of_photos;
 				$flickrwijit_settings->image_height = $post->image_height;
 				$flickrwijit_settings->image_width = $post->image_width;
-				$flickrwijit_settings->block_width = $post->block_width;
-				$flickrwijit_settings->block_height = $post->block_height;
-				$flickrwijit_settings->block_position = $post->block_position;
+				$flickrwijit_settings->enable_cache = $post->enable_cache;
+				$flickrwijit_settings->block_no_photos = $post->block_no_photos;
 				
 				$flickrwijit_settings->save();
 				
@@ -122,4 +121,5 @@ class Flickrwijit_Controller extends Admin_Controller {
 		$this->template->content->form_error = $form_error;
 		$this->template->content->form_saved = $form_saved;
 	}
+	
 }
