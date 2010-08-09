@@ -32,8 +32,8 @@ class Flickrwijit_Controller extends Admin_Controller {
 			'image_width' =>  '',
 			'image_height' => '',
 			'block_position' => '',
-			'block_width' => '',
-			'block_height' => ''
+			'enable_cache' => '',
+			'block_no_photos' => ''
 	    );
         //  Copy the form as errors, so the errors will be stored with keys
         //  corresponding to the form field names
@@ -57,8 +57,8 @@ class Flickrwijit_Controller extends Admin_Controller {
 			$post->add_rules('image_width','length[2,600]','numeric');
 			$post->add_rules('image_height','required','length[2,600]','numeric');
 			$post->add_rules('block_position','length[1,6]','numeric');
-			$post->add_rules('block_width','length[2,600]','numeric');
-			$post->add_rules('block_height','length[2,600]','numeric');
+			$post->add_rules('enable_cache','length[2,600]','numeric');
+			$post->add_rules('block_no_photos','length[2,600]','numeric');
 	        
 			// passed validation test.
 			if($post->validate()) {
@@ -112,8 +112,8 @@ class Flickrwijit_Controller extends Admin_Controller {
 				'image_width' => $flickrwijit_settings->image_width,
 				'image_height' => $flickrwijit_settings->image_height,
 				'block_position' => $flickrwijit_settings->block_position,
-				'block_width' => $flickrwijit_settings->block_width,
-				'block_height' => $flickrwijit_settings->block_height
+				'enable_cache' => $flickrwijit_settings->enable_cache,
+				'block_no_photos' => $flickrwijit_settings->block_no_photos
 	    	);
 	    }
 	    

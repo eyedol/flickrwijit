@@ -90,6 +90,13 @@
 				<?php print form::dropdown('enable_cache',array('0'=>'No','1'=>'Yes'),$form['enable_cache']); ?>
 			</div>
 			<span><?php echo Kohana::lang('flickrwijit.flickrwijit_enable_cache_blub');?></span>
+			
+			<div class="row" style="padding-top: 5px;">
+				<h4><a href="#" class="tooltip" title=""><?php echo Kohana::lang('flickrwijit.flickrwijit_block_no_of_photos');?></a></h4>
+				<?php print form::dropdown('block_no_photos',array('4'=>'4','6'=>'6','8'=>'8','10'=>'10'),$form['block_no_photos']); ?>
+			</div>
+			<span><?php echo Kohana::lang('flickrwijit.flickrwijit_block_no_of_photos_blub');?></span>
+			
 		</div>
 		<!-- flickwijit ends -->
 	</div>	

@@ -16,6 +16,7 @@ $lang = array
 	'flickrwijit_no_photo' => 'No  photos',
 	'flickrwijit_top_nav' => 'Photos',
 	'flickrwijit_enable_cache' => 'Enable cache',
+	'flickrwijit_block_no_of_photos_blub' => 'The number of photos to show on side block.',
 	'flickr_tag' => array
 	(
 		'required'	=> 'The flickr tag is required.',
