@@ -95,8 +95,13 @@ class flickrwijit {
 		
 		$flickrwijit_view = View::factory('flickrwijit_view');
 		
-		$f = $this->_get_flickr_images();
 		
+		
+		$f = $this->_get_flickr_images();
+		//enable caching
+		if( $flickrwijit_settings->enable_cache == 1 ) {
+			$f->enableCache("fs", "application/cache");	
+		}
 		$photos = $f->photos_search( array(
 			'tags' => $flickrwijit_settings->flickr_tag,
 			'per_page' => $flickrwijit_settings->block_no_photos,
@@ -111,6 +116,7 @@ class flickrwijit {
 		include Kohana::find_file('libraries/phpflickr','phpFlickr');
 		
 		$f = new phpFlickr(Kohana::config('flickrwijit.flick_api_key'));
+		//enable caching
 		return $f;
 	}
 
