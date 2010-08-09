@@ -15,6 +15,7 @@ $lang = array
 	'flickrwijit_more' => 'More...',
 	'flickrwijit_no_photo' => 'No  photos',
 	'flickrwijit_top_nav' => 'Photos',
+	'flickrwijit_enable_cache' => 'Enable cache',
 	'flickr_tag' => array
 	(
 		'required'	=> 'The flickr tag is required.',

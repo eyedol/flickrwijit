@@ -85,6 +85,11 @@
 				<?php print form::dropdown('block_position',array('0'=>'No','1'=>'Yes'),$form['block_position']); ?>
 			</div>
 			<span><?php echo Kohana::lang('flickrwijit.flickrwijit_top_menu_blub');?></span>
+			<div class="row" style="padding-top: 5px;">
+				<h4><a href="#" class="tooltip" title=""><?php echo Kohana::lang('flickrwijit.flickrwijit_enable_cache');?></a></h4>
+				<?php print form::dropdown('enable_cache',array('0'=>'No','1'=>'Yes'),$form['enable_cache']); ?>
+			</div>
+			<span><?php echo Kohana::lang('flickrwijit.flickrwijit_enable_cache_blub');?></span>
 		</div>
 		<!-- flickwijit ends -->
 	</div>	

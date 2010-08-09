@@ -80,7 +80,7 @@ class flickrwijit {
 		
 		if($flickrwijit_settings->block_position ==  1 ) {
 		
-			echo ($this_sub_page == "flickrwijit") ? 
+			echo ($top_nav == "flickrwijit") ? 
 				Kohana::lang('flickrwijit.flickrwijit_top_nav') : 
 				"<a href=\"".url::site()."flickrwijit\">".
 				Kohana::lang('flickrwijit.flickrwijit_top_nav')."</a>";
