@@ -33,7 +33,7 @@ foreach( (array)$photos['photo'] as $photo ) {
 </ul>
 </div>
 </div>
-<?php } else { ?> No flickr photos <?php }?></div>
+<?php } else { echo Kohana::lang('flickrwijit.flickrwijit_no_photo'); }?></div>
 
 </div>
 <!-- end reports block --></div>

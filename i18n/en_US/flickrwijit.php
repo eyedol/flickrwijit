@@ -11,6 +11,8 @@ $lang = array
 	'form_block_width' => 'Width of flickrwijit block',
 	'form_block_height' => 'Height of flickrwijit block',
 	'flickrwijit_link' => 'Flickrwijit',
+	'flickrwijit_more' => 'More...',
+	'flickrwijit_no_photo' => 'No flickr photos',
 	'flickr_tag' => array
 	(
 		'required'	=> 'The flickr tag is required.',
