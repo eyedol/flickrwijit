@@ -31,6 +31,7 @@ foreach( (array)$photos['photo'] as $photo ) {
 }
 ?>
 </ul>
+<?php echo $pagination; ?>
 </div>
 </div>
 <?php } else { echo Kohana::lang('flickrwijit.flickrwijit_no_photo'); }?></div>

@@ -29,16 +29,28 @@ class Flickrwijit_Controller extends Main_Controller {
 		
 		$f = new phpFlickr(Kohana::config('flickrwijit.flick_api_key'));
 		
-		$photos = $f->photos_search( array(
-			'tags' => $flickrwijit_settings->flickr_tag,
-			'per_page' => $flickrwijit_settings->num_of_photos,
-			'user_id' => $flickrwijit_settings->flickr_id ) );
+		//enable caching
+		if( $flickrwijit_settings->enable_cache == 1 ) {
+			$f->enableCache("fs", "application/cache");	
+		}
 		
+		$pagination = new Pagination(array(
+				'query_string' => 'page',
+				'items_per_page' => (int) Kohana::config('settings.items_per_page'),
+				'total_items' => $flickrwijit_settings->num_of_photos));
+		//print_r($pagination);
+		$photos = $f->photos_search( array(
+			'page' => $pagination->current_page,
+			'tags' => $flickrwijit_settings->flickr_tag,
+			'per_page' => (int) Kohana::config('settings.items_per_page'),
+			'user_id' => $flickrwijit_settings->flickr_id ) );
+	
 		$this->template->content->image_width = $flickrwijit_settings->image_width;
 		$this->template->content->image_height = $flickrwijit_settings->image_height;
 		$this->template->content->num_of_photos = $flickrwijit_settings->num_of_photos;
 		$this->template->content->f = $f;
 		$this->template->content->photos = $photos;
+		$this->template->content->pagination = $pagination;
 		
 	}
 }
