@@ -30,7 +30,7 @@ class Flickrwijit_Install {
 	{
 		// Create the database tables.
 		// Also include table_prefix in name
-		$this->db->query('CREATE TABLE `'.Kohana::config('database.default.table_prefix').'flickrwijit` (
+		$this->db->query('CREATE TABLE IF NOT EXISTS `'.Kohana::config('database.default.table_prefix').'flickrwijit` (
 			`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
 			`flickr_tag` varchar(255) DEFAULT NULL,
 			`flickr_id` varchar(15) DEFAULT NULL,
