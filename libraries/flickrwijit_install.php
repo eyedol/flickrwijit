@@ -32,15 +32,15 @@ class Flickrwijit_Install {
 		// Also include table_prefix in name
 		$this->db->query('CREATE TABLE IF NOT EXISTS `'.Kohana::config('database.default.table_prefix').'flickrwijit` (
 			`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-			`flickr_tag` varchar(255) DEFAULT NULL,
-			`flickr_id` varchar(15) DEFAULT NULL,
-			`num_of_photos` tinyint(4) NOT NULL DEFAULT \'0\',
-			`image_width` int(11) NOT NULL DEFAULT \'500\',
-			`image_height` int(11) NOT NULL DEFAULT \'375\',
-			`block_width` int(11) NOT NULL DEFAULT \'550\',
-			`block_height` int(11) NOT NULL DEFAULT \'425\',
-			`block_position` varchar(15) DEFAULT NULL,
-			 PRIMARY KEY (`id`)
+  			`flickr_tag` varchar(255) DEFAULT NULL,
+  			`flickr_id` varchar(15) DEFAULT NULL,
+  			`num_of_photos` tinyint(4) NOT NULL DEFAULT \'0\',
+  			`image_width` int(11) NOT NULL DEFAULT \'500\',
+  			`image_height` int(11) NOT NULL DEFAULT \'375\',
+  			`block_position` varchar(15) DEFAULT NULL,
+  			`enable_cache` int(5) NOT NULL,
+  			`block_no_photos` int(5) NOT NULL,
+  			PRIMARY KEY (`id`)
 		) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1');
 	}
 
