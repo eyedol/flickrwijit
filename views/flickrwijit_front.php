@@ -39,6 +39,3 @@ foreach( (array)$photos['photo'] as $photo ) {
 </div>
 <!-- end reports block --></div>
 </div>
-</div>
-</div>
-</div>
