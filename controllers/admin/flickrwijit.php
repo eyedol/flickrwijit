@@ -69,6 +69,7 @@ class Flickrwijit_Controller extends Admin_Controller {
 				$flickrwijit_settings->num_of_photos = $post->num_of_photos;
 				$flickrwijit_settings->image_height = $post->image_height;
 				$flickrwijit_settings->image_width = $post->image_width;
+				$flickrwijit_settings->block_position = $post->block_position;
 				$flickrwijit_settings->enable_cache = $post->enable_cache;
 				$flickrwijit_settings->block_no_photos = $post->block_no_photos;
 				
